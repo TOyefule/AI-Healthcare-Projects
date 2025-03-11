@@ -1,0 +1,39 @@
+# Import necessary libraries
+import pandas as pd
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report, confusion_matrix
+
+# Load dataset (example EHR dataset)
+data = pd.read_csv('ehr_data.csv')
+
+# Preprocess the data (for example, handle missing values and normalization)
+data.fillna(data.mean(), inplace=True)
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(data[['heart_rate', 'blood_pressure', 'lab_results']])
+
+# Train-test split
+X = data_scaled
+y = data['sepsis_label']  # Target variable
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Define the model
+model = Sequential()
+model.add(LSTM(64, activation='relu', input_shape=(X_train.shape[1], 1)))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model
+model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
+
+# Evaluate the model
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
