@@ -4,48 +4,39 @@
   <meta charset="UTF-8" />
   <title>Healthcare A.I. Specialist Portfolio</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="" />
+  <meta name="description" content="Healthcare AI Portfolio showcasing advanced AI-driven projects in fraud detection, disease prediction, and risk assessment." />
   <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="loader-wrapper">
     <div class="loader"></div>
   </div>
-  <style>
-    /* For best practice, move CSS below to an external CSS file. */
-    @keyframes rotation {
-      0% {
-        transform: rotate(0deg); }
-      100% {
-        transform: rotate(360deg); } }
-    #loader-wrapper {
-      background-color: #FFFFFF;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      width: 100%;
-      height: 100%;
-      text-align: center; }
-    .loader {
-      width: 40px;
-      height: 40px;
-      border: 5px solid #000000;
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      margin-top:calc(50vh - 20px);
-      display: inline-block;
-      box-sizing: border-box;
-      -webkit-animation: rotation 1s linear infinite;
-      animation: rotation 1s linear infinite; }
-  </style>
-  <h1>Data Analytics Portfolio </h1>
-  <div style="width: 100%; position: fixed; z-index: 1000; top: 0; left: 0; background: lightgray;"><p>This is an announcemet.</p><div onClick="parentNode.remove()">Close [X]</div></div>
+  
+  <h1> A.I. Healthcare Portfolio </h1>
+  
+  <div class="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="project1.html">Fraud Detection in Insurance Claims</a></li>
+      <li><a href="project2.html">Sepsis Prediction Using EHR Data</a></li>
+      <li><a href="project3.html">Cancer Risk Assessment with Multi-Modal Data</a></li>
+    </ul>
+  </div>
+  
+  <div class="project-results">
+    <h2>Results</h2>
+    <div id="results-container">
+      <p>Loading project results...</p>
+    </div>
+  </div>
+  
+  <div style="width: 100%; position: fixed; z-index: 1000; top: 0; left: 0; background: lightgray;">
+    <p>This is an announcement.</p>
+    <div onClick="parentNode.remove()">Close [X]</div>
+  </div>
+  
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    $(window).on('load', function() {
-      $("#loader-wrapper").fadeOut(700);
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
